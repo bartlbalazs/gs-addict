@@ -1,0 +1,9 @@
+[Unit]
+Description=GS Addict service
+After=syslog.target
+
+[Service]
+ExecStart=/path/to/your-app.jar SuccessExitStatus=143
+
+[Install]
+WantedBy=multi-user.target

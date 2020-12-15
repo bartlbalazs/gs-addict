@@ -1,0 +1,36 @@
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    password: ''
+    url: jdbc:h2:file:~/gsaddict-h2-db
+    username: sa
+  h2:
+    console:
+      enabled: true
+      path: /h2
+  jpa:
+    hibernate:
+      ddl-auto: update
+  mail:
+    host: smtp.gmail.com
+    password: [password]
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+    username: [sender-user]
+application:
+  scraper:
+    url: https://gsfanatic.com/hu/legfrissebb-hangszer/hirdetesek
+    include:
+      - gibson
+      - epiphone
+      - fender
+      - tokai
+      - greco
+      - prs
+  email:
+    receiver: [receiver-email]
