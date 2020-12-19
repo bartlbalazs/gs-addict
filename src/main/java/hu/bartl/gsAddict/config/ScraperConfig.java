@@ -13,4 +13,5 @@ public class ScraperConfig {
 
     private String url;
     private Set<String> include;
+    private Set<String> exclude;
 }

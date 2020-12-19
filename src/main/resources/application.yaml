@@ -32,5 +32,25 @@ application:
       - tokai
       - greco
       - prs
+      - lawsuit
+      - "paul reed smith"
+    exclude:
+      - w-os
+      - wattos
+      - basszus
+      - erősítő
+      - gitárkombó
+      - jaguar
+      - footswitch
+      - lábkapcsoló
+      - princeton
+      - squier
+      - duo
+      - duo
+      - champion
+      - " jazz "
+      - " bass "
+      - " sg "
+      - " twin "
   email:
     receiver: [receiver-email]

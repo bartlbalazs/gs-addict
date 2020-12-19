@@ -12,9 +12,9 @@ import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+import static java.util.function.Predicate.not;
 import static org.jsoup.Connection.Method.GET;
 
 @Service
@@ -33,6 +33,7 @@ public class ScraperService {
         Set<Ad> ads = adDivs.stream()
                 .map(this::convertToAd)
                 .filter(this::isInterrestingChange)
+                .filter(not(this::shouldExclude))
                 .collect(Collectors.toSet());
 
         log.debug("{} ads downloaded.", ads.size());
@@ -41,6 +42,14 @@ public class ScraperService {
 
     private boolean isInterrestingChange(Ad ad) {
         return config.getInclude()
+                .stream().map(String::toLowerCase)
+                .filter(exp -> ad.getName().toLowerCase().contains(exp))
+                .findAny()
+                .isPresent();
+    }
+
+    private boolean shouldExclude(Ad ad) {
+        return config.getExclude()
                 .stream().map(String::toLowerCase)
                 .filter(exp -> ad.getName().toLowerCase().contains(exp))
                 .findAny()

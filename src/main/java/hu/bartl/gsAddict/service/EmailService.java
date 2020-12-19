@@ -22,6 +22,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static java.nio.charset.StandardCharsets.UTF_8;
+
 @Service
 @AllArgsConstructor
 @Slf4j
@@ -65,11 +67,11 @@ public class EmailService {
 
     private MimeMessage buildMailMessage(String htlm) throws MessagingException {
         var message = emailSender.createMimeMessage();
-        var helper = new MimeMessageHelper(message, "utf-8");
+        var helper = new MimeMessageHelper(message, UTF_8.name());
 
         helper.setFrom(emailConfig.getReceiver());
         helper.setTo(emailConfig.getReceiver());
-        message.setSubject("GS új hirdetések - " + DateTimeFormatter.ISO_DATE_TIME.format(LocalDateTime.now()));
+        message.setSubject("GS új hirdetések - " + DateTimeFormatter.ISO_DATE_TIME.format(LocalDateTime.now()), UTF_8.name());
         message.setContent(htlm, "text/html");
         return message;
     }
