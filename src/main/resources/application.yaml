@@ -26,14 +26,15 @@ application:
   scraper:
     url: https://gsfanatic.com/hu/legfrissebb-hangszer/hirdetesek
     include:
-      - gibson
+      - emg    
       - epiphone
       - fender
-      - tokai
       - greco
-      - prs
+      - gibson
       - lawsuit
       - "paul reed smith"
+      - prs
+      - tokai
     exclude:
       - w-os
       - wattos
@@ -52,5 +53,12 @@ application:
       - " bass "
       - " sg "
       - " twin "
+      - "fender fm"
+      - "fender bxr"
+      - frontman
+      - explorer
+      - thunderbird
+      - firebird
+      - " g force"
   email:
     receiver: [receiver-email]
